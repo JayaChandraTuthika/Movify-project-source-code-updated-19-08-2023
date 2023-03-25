@@ -1,0 +1,30 @@
+
+.sidebar-container{
+    color: white;
+    max-width: 20%;
+    min-width: 20%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.side-bar-menu-heading{
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    padding:5px 15px;
+
+}
+.sidebar-links{
+    color: white;
+    padding: 15px 20px;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    border-radius: 5px;
+    
+}
+.sidebar-bottom-container{
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}

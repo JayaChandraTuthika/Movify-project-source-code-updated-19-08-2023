@@ -1,0 +1,29 @@
+
+//Get trending movies
+GET https://api.themoviedb.org/3/trending/all/day?api_key=fae62ec587f8bc50f34e46b6d33b41e2
+###
+
+//Get upcoming movies
+GET https://api.themoviedb.org/3/movie/upcoming?api_key=fae62ec587f8bc50f34e46b6d33b41e2&language=en-US&page=1
+###
+//Get  Movie Details
+GET https://api.themoviedb.org/3/movie/413323?api_key=fae62ec587f8bc50f34e46b6d33b41e2&language=en-US
+###
+//Get Latest
+GET https://api.themoviedb.org/3/movie/latest?api_key=fae62ec587f8bc50f34e46b6d33b41e2&language=en-US
+###
+//Get Popular
+GET https://api.themoviedb.org/3/movie/popular?api_key=fae62ec587f8bc50f34e46b6d33b41e2&language=en-US&page=1
+###
+//Get Top rated
+GET https://api.themoviedb.org/3/movie/top_rated?api_key=fae62ec587f8bc50f34e46b6d33b41e2&language=en-US&page=1
+###
+//Search Movies
+GET https://api.themoviedb.org/3/search/movie?query=avengers&api_key=fae62ec587f8bc50f34e46b6d33b41e2&language=en-US&page=1&include_adult=false
+###
+//Similar Movies
+GET https://api.themoviedb.org/3/movie/521720/similar?api_key=fae62ec587f8bc50f34e46b6d33b41e2&language=en-US&page=1
+###
+//Get reviews
+GET https://api.themoviedb.org/3/movie/521720/reviews?api_key=fae62ec587f8bc50f34e46b6d33b41e2&language=en-US&page=1
+###

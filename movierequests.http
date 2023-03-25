@@ -1,0 +1,6 @@
+//GET TRENDING MOVIES
+GET https://api.themoviedb.org/3/trending/all/day?api_key=fae62ec587f8bc50f34e46b6d33b41e2
+###
+
+//GET LATEST MOVIES
+GET https://api.themoviedb.org/3/movie/latest?api_key=fae62ec587f8bc50f34e46b6d33b41e2&language=en-US
