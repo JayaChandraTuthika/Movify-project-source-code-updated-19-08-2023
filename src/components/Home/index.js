@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import {AiFillStar} from 'react-icons/ai'
 import {BsFillSuitHeartFill,BsFillPlayFill,BsBookmarkPlus} from 'react-icons/bs'
 
@@ -24,6 +24,7 @@ const statusConstansts = {
 const Home = () => {
     const [trendingList,updateTrendingList] = useState([])
     const [status,setStatus] = useState(statusConstansts.initial)
+    const navigate = useNavigate()
 
     useEffect(() => {
         getTrendingMovies()
@@ -37,7 +38,7 @@ const Home = () => {
         // console.log(response)
         if (response.ok===true){
             const data = await response.json()
-            console.log(data)
+            // console.log(data)
             const updatedData = data.results.map(each=>({
                 id:each.id,
                 title:each.title,
@@ -49,7 +50,7 @@ const Home = () => {
                 releaseDate:each.release_date,
                 votesCount:each.vote_count
             }))
-            console.log(updatedData)
+            // console.log(updatedData)
             updateTrendingList(updatedData)
             setStatus(statusConstansts.success)
         }else{
@@ -72,13 +73,13 @@ const Home = () => {
                 
             >
                 {trendingList.map(movie => (
-                    <div className="poster-image" style={{backgroundImage:`linear-gradient(to right,rgba(0, 0, 0, 0.700),rgba(0, 0, 0, 0.600)),url(https://image.tmdb.org/t/p/original${movie.backdropPath})`}}>
+                    <div key={movie.id} className="poster-image" style={{backgroundImage:`linear-gradient(to right,rgba(0, 0, 0, 0.700),rgba(0, 0, 0, 0.600)),url(https://image.tmdb.org/t/p/original${movie.backdropPath})`}}>
                             <h1 className="poster-title">{movie.title}</h1>
                             <p className="poster-overview">{movie.overview}</p>
                             <p className="rating-votes"><AiFillStar className="star-icon"/>{movie.rating} 
                                     <BsFillSuitHeartFill className="heart-icon"/> {movie.votesCount}</p>
                             <div className="poster-buttons-container">
-                                <button type="button" className="poster-watchnow-btn"><BsFillPlayFill className="play-icon"/>Watch Now</button>
+                                <button type="button" className="poster-watchnow-btn" onClick={() => navigate(`/movies/${movie.id}`)}><BsFillPlayFill className="play-icon"/>Watch Now</button>
                                 <button type="button" className="poster-save-btn"><BsBookmarkPlus className="play-icon"/>Wishlist</button>
                             </div>
                     </div>

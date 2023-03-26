@@ -1,0 +1,11 @@
+*{
+    border: 1px solid white;
+}
+
+.movie-details-main-card{
+    background-color: transparent;
+    color: white;
+    margin: 25px;
+    height: 500px;
+    background-size: cover;
+}

@@ -7,7 +7,7 @@ GET https://api.themoviedb.org/3/trending/all/day?api_key=fae62ec587f8bc50f34e46
 GET https://api.themoviedb.org/3/movie/upcoming?api_key=fae62ec587f8bc50f34e46b6d33b41e2&language=en-US&page=1
 ###
 //Get  Movie Details
-GET https://api.themoviedb.org/3/movie/413323?api_key=fae62ec587f8bc50f34e46b6d33b41e2&language=en-US
+GET https://api.themoviedb.org/3/movie/493529?api_key=fae62ec587f8bc50f34e46b6d33b41e2&language=en-US
 ###
 //Get Latest
 GET https://api.themoviedb.org/3/movie/latest?api_key=fae62ec587f8bc50f34e46b6d33b41e2&language=en-US

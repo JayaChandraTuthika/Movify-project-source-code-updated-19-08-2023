@@ -28,6 +28,8 @@
     max-height: 120vh;
     overflow:auto;
     padding-bottom: 55px;
+    z-index: 1;
+    background:linear-gradient(to top right,transparent,transparent,rgba(143, 50, 60, 0.233)) ;
 }
 
 .header{
@@ -151,6 +153,8 @@
     font-size: 25px;
     margin-left: 15px;
     margin-top: 20px;
+    display: flex;
+    align-items: center;
 }
 .slick-container{
     height: 270px;
