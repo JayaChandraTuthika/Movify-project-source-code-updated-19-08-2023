@@ -1,7 +1,7 @@
     
 
 .login-bg-container{
-    background:linear-gradient(to bottom right,rgba(2, 2, 2, 0.938),rgba(3, 3, 3, 0.822)),url('https://cinebox.vn/en/wp-content/uploads/how-much-does-netflix-pay-for-a-movie-780x470.jpg');
+    background:linear-gradient(to bottom right,rgba(2, 2, 2, 0.938),rgba(3, 3, 3, 0.822)),url('https://res.cloudinary.com/dds8wfxdw/image/upload/v1679769391/Movify-project-resources/Login-bg_v4zmur.jpg');
     background-size: cover;
     min-height: 110vh;
     display: flex;

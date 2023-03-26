@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 // import { Link } from "react-router-dom"
 import {AiFillStar} from 'react-icons/ai'
 import {BsFillSuitHeartFill} from 'react-icons/bs'
-// import {GrPlayFill} from 'react-icons/gr'
+import {BsFire} from 'react-icons/bs'
 import  {TailSpin } from 'react-loader-spinner'
 import { SlickCardContainer } from "./styled.js"
 import Slider from "react-slick";
@@ -33,7 +33,7 @@ const TrendingSlider = () => {
         // console.log(response)
         if (response.ok===true){
             const data = await response.json()
-            console.log(data)
+            // console.log(data)
             const updatedData = data.results.map(each=>({
                 id:each.id,
                 title:each.title,
@@ -53,38 +53,6 @@ const TrendingSlider = () => {
         }
         
     }
-
-    
-
-    // const renderHeader = () => (
-    //     <div className="header">
-    //         <Carousel showThumbs={false} 
-    //             autoPlay={true}
-    //             swipeable = {true}
-    //             transitionTime={2} 
-    //             infiniteLoop={true}
-    //             showStatus={false}
-    //             width={"97%"}
-                
-    //         >
-    //             {trendingList.map(movie => (
-    //                 <div className="poster-image" style={{backgroundImage:`linear-gradient(to right,rgba(0, 0, 0, 0.700),rgba(0, 0, 0, 0.600)),url(https://image.tmdb.org/t/p/original${movie.backdropPath})`}}>
-    //                         <h1 className="poster-title">{movie.title}</h1>
-    //                         <p className="poster-overview">{movie.overview}</p>
-    //                         <p className="rating-votes"><AiFillStar className="star-icon"/>{movie.rating} 
-    //                                 <BsFillSuitHeartFill className="heart-icon"/> {movie.votesCount}</p>
-    //                         <div className="poster-buttons-container">
-    //                             <button type="button" className="poster-watchnow-btn"><BsFillPlayFill className="play-icon"/>Watch Now</button>
-    //                             <button type="button" className="poster-save-btn"><BsBookmarkPlus className="play-icon"/>Wishlist</button>
-    //                         </div>
-    //                 </div>
-    //             ))}
-                
-    //         </Carousel>
-
-    //         </div>
-
-    // )
 
     const renderTrending = () => {
         const settings = {
@@ -125,7 +93,7 @@ const TrendingSlider = () => {
             <Slider {...settings}>
       
         {trendingList.map(movie => (
-            <SlickCardContainer backgroundUrl={`https://image.tmdb.org/t/p/original${movie.posterPath}`}>
+            <SlickCardContainer key={movie.id} backgroundUrl={`https://image.tmdb.org/t/p/original${movie.posterPath}`}>
                 <div className="overlay-movie-card">
                     {/* <BsPlayFill color="#ffffff" className="movie-card-play-icon"/> */}
                         <p className="movie-card-title">{movie.title}</p>
@@ -146,14 +114,6 @@ const TrendingSlider = () => {
     </Slider>
         </div>
     }
-
-    // const renderHeaderLoader = () => (
-    //     <div className="header">
-    //         <div className="loader-container">
-    //             <TailSpin color="red"/>
-    //         </div>
-    //     </div>
-    // )
 
     const renderTrendingLoader = () => (<div className="slick-container">
             <div className="loader-container">
@@ -179,7 +139,7 @@ const TrendingSlider = () => {
 
     return (
         <>
-        <h1 className="home-slick-heading">Trending Now</h1>
+        <h1 className="home-slick-heading"><BsFire className="home-slider-heading-icon"/>Trending Now</h1>
             {trending}
         </>
         

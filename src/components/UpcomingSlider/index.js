@@ -2,7 +2,9 @@ import { useEffect, useState } from "react"
 // import { Link } from "react-router-dom"
 import {AiFillStar} from 'react-icons/ai'
 import {BsFillSuitHeartFill} from 'react-icons/bs'
-// import {GrPlayFill} from 'react-icons/gr'
+import {BiCameraMovie} from 'react-icons/bi'
+import {RiMovie2Fill} from 'react-icons/ri'
+import {MdMovieFilter} from 'react-icons/md'
 import  {TailSpin } from 'react-loader-spinner'
 import { SlickCardContainer } from "./styled.js"
 import Slider from "react-slick";
@@ -18,22 +20,22 @@ const statusConstansts = {
 }
 
 const UpcomingSlider = () => {
-    const [trendingList,updateTrendingList] = useState([])
+    const [upcomingList,updateUpcomingList] = useState([])
     const [status,setStatus] = useState(statusConstansts.initial)
 
     useEffect(() => {
-        getTrendingMovies()
+        getUpcomingMovies()
         
     },[])
 
-    const getTrendingMovies = async () => {
+    const getUpcomingMovies = async () => {
         setStatus(statusConstansts.inProgress)
         const upcomingMoviesUrl = "https://api.themoviedb.org/3/movie/upcoming?api_key=fae62ec587f8bc50f34e46b6d33b41e2&language=en-US&page=1"
         const response = await fetch(upcomingMoviesUrl)
         // console.log(response)
         if (response.ok===true){
             const data = await response.json()
-            console.log(data)
+            // console.log(data)
             const updatedData = data.results.map(each=>({
                 id:each.id,
                 title:each.title,
@@ -46,7 +48,7 @@ const UpcomingSlider = () => {
                 votesCount:each.vote_count
             }))
             console.log(updatedData)
-            updateTrendingList(updatedData)
+            updateUpcomingList(updatedData)
             setStatus(statusConstansts.success)
         }else{
             setStatus(statusConstansts.failure)
@@ -54,7 +56,7 @@ const UpcomingSlider = () => {
         
     }
 
-    const renderTrending = () => {
+    const renderUpcoming = () => {
         const settings = {
             dots: false,
             infinite: true,
@@ -92,8 +94,8 @@ const UpcomingSlider = () => {
         return <div className="slick-container">
             <Slider {...settings}>
       
-        {trendingList.map(movie => (
-            <SlickCardContainer backgroundUrl={`https://image.tmdb.org/t/p/original${movie.posterPath}`}>
+        {upcomingList.map(movie => (
+            <SlickCardContainer key={movie.id} backgroundUrl={`https://image.tmdb.org/t/p/original${movie.posterPath}`}>
                 <div className="overlay-movie-card">
                         <p className="movie-card-title">{movie.title}</p>
                         <p className="rating-votes">
@@ -112,31 +114,31 @@ const UpcomingSlider = () => {
         </div>
     }
 
-    const renderTrendingLoader = () => (<div className="slick-container">
+    const renderUpcomingLoader = () => (<div className="slick-container">
             <div className="loader-container">
                 <TailSpin color="red"/>
             </div>
         </div>)
     
 
-    let trending
+    let upcoming
     switch (status) {
         case statusConstansts.success:
-            trending = renderTrending()
+            upcoming = renderUpcoming()
             break;
         case statusConstansts.inProgress:
-            trending = renderTrendingLoader()
+            upcoming = renderUpcomingLoader()
             break
         default:
-            trending = null
+            upcoming = null
             break;
 
     }
 
     return (
         <>
-        <h1 className="home-slick-heading">Trending Now</h1>
-            {trending}
+        <h1 className="home-slick-heading"><MdMovieFilter className="home-slider-heading-icon"/>Upcoming</h1>
+            {upcoming}
         </>
         
             
