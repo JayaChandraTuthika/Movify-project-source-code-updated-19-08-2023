@@ -1,11 +1,191 @@
 *{
-    border: 1px solid white;
+    /* border: 1px solid white; */
 }
 
 .movie-details-main-card{
     background-color: transparent;
     color: white;
-    margin: 25px;
-    height: 500px;
+    /* margin: 25px; */
+    min-height: 500px;
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+.details-inner-card-1{
+    width: 100%;
+    min-height: 400px;
+    background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0.363),rgb(0, 0, 0));
+    display: flex;
+    flex-direction: column;
+    padding: 20px 100px;
+    padding-bottom: 45px;
+}
+.movie-details-poster-image{
+    height: 280px;
+    width: 200px;
+    position: relative;
+    top: 170px;
+    left:100px;
+    border: 1px solid white;
+    box-shadow: 15px 15px 10px 10px rgba(7, 7, 7, 0.705);
+}
+.md-title{
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    font-size: 35px;
+    font-weight: 500px;
+    margin-left: 280px;
+    display: flex;
+    align-items: flex-end;
+    padding: 0;
+}
+.md-adult-tag{
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 8px;
+    padding: 3px 7px;
+    border: 1px solid white;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+
+.md-rating{
+    margin-left: 280px;
+    font-size: 17px;
+    margin-top: 10px;
+}
+.md-icon{
+    height: 25px;
+    width: 25px;
+    margin-right: 5px;
+}
+.laguage-list{
+    list-style-type: none;
+    display: flex;
+    margin-left: 280px;
+    margin-top: 10px;
+    align-items: center;
+    
+}
+.laguage-item{
+    color: rgb(247, 56, 88);
+    border: 1px solid rgb(247, 56, 88);
+    padding: 2px 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    border-radius: 4px;
+    margin-right: 7px;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+}
+.genre-list{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    margin-left: 280px;
+    margin-top: 5px;
+}
+.list-category{
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    font-size: 14px;
+    margin-right: 15px;
+
+}
+.separator-line{
+    border: 1px solid rgb(90, 36, 49);
+    margin-top: 30px;
+}
+.md-story{
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border-left: 2px solid rgb(238, 8, 85);
+    /* width: 60px; */
+    padding-left: 5px;
+    animation: heading-expand 4s  infinite ease-in;
+    overflow: hidden;
+}
+@keyframes heading-expand {
+    0%{
+        width: 2px;
+    }
+    100%{
+        width: 100%;
+    }
+}
+.md-story-overview{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: rgb(201, 197, 197);
+    margin-top: 6px;
+}
+.md-category-sub-heading{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: white;
+    margin: 15px 0;
+    margin-right: 10px;
+}
+.md-category-sub-heading-2{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: white;
+    margin: 15px 0;
+    margin-right: 10px;
+    margin-left: 50px;
+    
+}
+.production-list{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    /* margin-left: 280px; */
+    margin-top: 15px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+.producer-image{
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+    /* border-radius: 20px; */
+}
+
+.producer-list-item{
+    color: rgb(247, 56, 88);
+    /* border: 1px solid rgb(247, 56, 88); */
+    padding: 2px 8px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    border-radius: 4px;
+    margin-right: 7px;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+}
+.visit-page-link{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: white;
+    
+    margin-left: 50px;
+}
+.visit-page-link-icon{
+    margin-left: 5px;
+    position: relative;
+    top: 3px;
 }

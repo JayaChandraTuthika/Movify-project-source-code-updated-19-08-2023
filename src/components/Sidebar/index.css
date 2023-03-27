@@ -6,7 +6,7 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background:linear-gradient(to bottom left,transparent,rgba(54, 21, 24, 0.308))
+    /* background:linear-gradient(to bottom left,transparent,rgba(54, 21, 24, 0.308)) */
 }
 .logo-image-sidebar{
     height: 45px;
