@@ -1,17 +1,20 @@
-import { Link, useResolvedPath } from 'react-router-dom'
+import { Link, useNavigate, useResolvedPath } from 'react-router-dom'
 import {BiHomeAlt,BiStar,BiLogOut} from 'react-icons/bi'
 import {ImDisplay} from 'react-icons/im'
 import {RiBookmark3Line} from 'react-icons/ri'
 import {MdOutlineSettings} from 'react-icons/md'
-import { PureComponent, useMemo } from 'react'
+// import { PureComponent, useMemo } from 'react'
+import Popup from 'reactjs-popup'
 
 import './index.css'
 import { useEffect, useState } from 'react'
+import Cookies from 'js-cookie'
 
 const Sidebar = () => {
     const [activeTab,changeActiveTab] = useState("")
     const path = useResolvedPath()
     const {pathname} = path
+    const navigate = useNavigate()
     
 
     useEffect(() => {
@@ -37,6 +40,11 @@ const Sidebar = () => {
         
     },[pathname])
     // console.log('side bar')
+
+    const onLogout = () => {
+        Cookies.remove('jwt_token')
+        navigate('/login')
+    }
     
 
     return (
@@ -58,7 +66,14 @@ const Sidebar = () => {
             <p className='side-bar-menu-heading'>General</p>
             <hr className='sidebar-separator-line'/>
             <Link className='sidebar-links'><MdOutlineSettings className='side-bar-option-icon'/>Settings</Link>
-            <Link className='sidebar-links'><BiLogOut className='side-bar-option-icon'/>Log out</Link>
+            <button type="button" className='sidebar-links' onClick={onLogout}><BiLogOut className='side-bar-option-icon'/>Log out</button>
+            <Popup
+                trigger={<button type="button" className='sidebar-links'><BiLogOut className='side-bar-option-icon'/>Log out</button>}
+                modal
+                className='logout-popup'
+            >
+                <h1>Hey yo!!</h1>
+            </Popup>
             </div>
             
         </div>

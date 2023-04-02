@@ -17,6 +17,7 @@
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
     "react-slick": "^0.29.0",
+    "reactjs-popup": "^2.0.5",
     "styled-components": "^5.3.9",
     "typed.js": "^2.0.132",
     "web-vitals": "^2.1.4"

@@ -12,6 +12,7 @@ import Popular from './components/Popular';
 import WishlistComponent from './components/WishlistComponent';
 import TVshows from './components/TVshows';
 import TVshowDetails from './components/TVshowDetails';
+import ProtectedRoutes from './components/ProtectedRoutes';
 
 const App = () => {
   const [isDark,toggleTheme] = useState(true)
@@ -39,13 +40,16 @@ return (<MoviesContext.Provider value={{toggleTheme,isDark,searchText,onChangese
 <Routes>
   <Route exact path='/login' element={<Login/>}/>
   <Route exact path='/register' element={<Register/>}/>
-  <Route exact path="/" element={<Home/>}/>
-  <Route exact path="/movies/:id" element={<MovieDetails/>}/>
-  <Route exact path="/search" element={<Search/>}/>
-  <Route exact path="/popular" element={<Popular/>}/>
-  <Route exact path="/tvshows" element={<TVshows/>}/>
-  <Route exact path="/tv/:id" element={<TVshowDetails/>}/>
-  <Route exact path="/wishlisted" element={<WishlistComponent/>}/>
+  <Route element = {<ProtectedRoutes/>}>
+    <Route exact path="/" element={<Home/>}/>
+    <Route exact path="/movies/:id" element={<MovieDetails/>}/>
+    <Route exact path="/search" element={<Search/>}/>
+    <Route exact path="/popular" element={<Popular/>}/>
+    <Route exact path="/tvshows" element={<TVshows/>}/>
+    <Route exact path="/tv/:id" element={<TVshowDetails/>}/>
+    <Route exact path="/wishlisted" element={<WishlistComponent/>}/> 
+  </Route>
+  
 
 </Routes>
 </MoviesContext.Provider>)
