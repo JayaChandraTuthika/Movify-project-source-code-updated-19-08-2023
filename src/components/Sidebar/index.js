@@ -1,12 +1,44 @@
-import { Link } from 'react-router-dom'
+import { Link, useResolvedPath } from 'react-router-dom'
 import {BiHomeAlt,BiStar,BiLogOut} from 'react-icons/bi'
 import {ImDisplay} from 'react-icons/im'
 import {RiBookmark3Line} from 'react-icons/ri'
 import {MdOutlineSettings} from 'react-icons/md'
+import { PureComponent, useMemo } from 'react'
 
 import './index.css'
+import { useEffect, useState } from 'react'
 
 const Sidebar = () => {
+    const [activeTab,changeActiveTab] = useState("")
+    const path = useResolvedPath()
+    const {pathname} = path
+    
+
+    useEffect(() => {
+        // console.log("memo executed")
+        setTimeout(() => {
+            if (pathname==="/"){
+                changeActiveTab('home')
+                // console.log('now')
+            }
+            else if (pathname==='/popular'){
+                changeActiveTab('popular')
+            }
+            else if (pathname==='/tvshows'){
+                changeActiveTab('tvshows')
+            }
+            else if (pathname==='/wishlisted'){
+                changeActiveTab('wishlist')
+            }
+        
+
+        },300)
+        
+        
+    },[pathname])
+    // console.log('side bar')
+    
+
     return (
         <div className="sidebar-container">
             <h1 className='logo-text-sidebar'>
@@ -17,12 +49,14 @@ const Sidebar = () => {
             <p className='side-bar-menu-heading'>
                 Menu
             </p>
-            <Link className='sidebar-links'><BiHomeAlt className='side-bar-option-icon'/>Home</Link>
-            <Link className='sidebar-links'><BiStar className='side-bar-option-icon'/>Popular</Link>
-            <Link className='sidebar-links'><ImDisplay className='side-bar-option-icon'/>TV Shows</Link>
-            <Link className='sidebar-links'><RiBookmark3Line className='side-bar-option-icon'/>Wishlisted</Link>
+            <hr className='sidebar-separator-line'/>
+            <Link className={`sidebar-links ${activeTab==='home'?"active-tab":""}`} to="/"><BiHomeAlt className='side-bar-option-icon'/>Home</Link>
+            <Link className={`sidebar-links ${activeTab==='popular'?"active-tab":""}`} to="/popular"><BiStar className='side-bar-option-icon'/>Popular</Link>
+            <Link className={`sidebar-links ${activeTab==='tvshows'?"active-tab":""}`} to="/tvshows"><ImDisplay className='side-bar-option-icon'/>TV Shows</Link>
+            <Link className={`sidebar-links ${activeTab==='wishlist'?"active-tab":""}`} to="/wishlisted"><RiBookmark3Line className='side-bar-option-icon'/>Wishlisted</Link>
             <div className='sidebar-bottom-container'>
             <p className='side-bar-menu-heading'>General</p>
+            <hr className='sidebar-separator-line'/>
             <Link className='sidebar-links'><MdOutlineSettings className='side-bar-option-icon'/>Settings</Link>
             <Link className='sidebar-links'><BiLogOut className='side-bar-option-icon'/>Log out</Link>
             </div>

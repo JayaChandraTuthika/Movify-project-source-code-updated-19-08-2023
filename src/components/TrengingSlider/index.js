@@ -2,12 +2,14 @@ import { useEffect, useState } from "react"
 // import { Link } from "react-router-dom"
 import {AiFillStar} from 'react-icons/ai'
 import {BsFillSuitHeartFill} from 'react-icons/bs'
+import {MdDoubleArrow} from 'react-icons/md'
 import {BsFire} from 'react-icons/bs'
 import  {TailSpin } from 'react-loader-spinner'
 import { SlickCardContainer } from "./styled.js"
 import Slider from "react-slick";
 
 import './index.css'
+import { Link } from "react-router-dom"
 
 
 const statusConstansts = {
@@ -45,7 +47,7 @@ const TrendingSlider = () => {
                 releaseDate:each.release_date,
                 votesCount:each.vote_count
             }))
-            console.log(updatedData)
+            // console.log(updatedData)
             updateTrendingList(updatedData)
             setStatus(statusConstansts.success)
         }else{
@@ -53,6 +55,23 @@ const TrendingSlider = () => {
         }
         
     }
+
+    const NextArrow = (props) => {
+        const {onClick,className,style} = props
+        return(
+        <div className="next-arrow-slick" onClick={onClick}>
+            <MdDoubleArrow className="slick-arrow-icon-right"/>
+        </div>
+        )}
+
+    const PrevArrow = (props) => {
+        const {onClick,className,style} = props
+        return(
+        <div className="prev-arrow-slick" onClick={onClick}>
+            <MdDoubleArrow className="slick-arrow-icon-left"/>
+        </div>
+        )}
+    
 
     const renderTrending = () => {
         const settings = {
@@ -86,14 +105,18 @@ const TrendingSlider = () => {
                     slidesToScroll: 1
                   }
                 }
-              ]
+              ],
+            nextArrow:<NextArrow/>,
+            prevArrow:<PrevArrow/>
         }
 
         return <div className="slick-container">
+            <h1 className="home-slick-heading"><BsFire className="home-slider-heading-icon"/>Trending Now</h1>
             <Slider {...settings}>
       
         {trendingList.map(movie => (
-            <SlickCardContainer key={movie.id} backgroundUrl={`https://image.tmdb.org/t/p/original${movie.posterPath}`}>
+            <Link to={`/movies/${movie.id}`} key={movie.id} className="link-style">
+            <SlickCardContainer  backgroundUrl={`https://image.tmdb.org/t/p/original${movie.posterPath}`}>
                 <div className="overlay-movie-card">
                     {/* <BsPlayFill color="#ffffff" className="movie-card-play-icon"/> */}
                         <p className="movie-card-title">{movie.title}</p>
@@ -108,6 +131,8 @@ const TrendingSlider = () => {
                 </div>
                 
             </SlickCardContainer>
+            </Link>
+            
         ))}
         
       
@@ -139,7 +164,6 @@ const TrendingSlider = () => {
 
     return (
         <>
-        <h1 className="home-slick-heading"><BsFire className="home-slider-heading-icon"/>Trending Now</h1>
             {trending}
         </>
         

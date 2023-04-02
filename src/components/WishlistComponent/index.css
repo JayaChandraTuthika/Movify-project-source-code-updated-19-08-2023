@@ -1,0 +1,51 @@
+*{
+    /* border: 1px solid white; */
+    /* font-family: 'Poppins', sans-serif; */
+}
+.wishlist-movies-list{
+    display: flex;
+    list-style-type: none;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+}
+.wishlist-movies-heading{
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    margin: 15px 25px;
+    margin-top: 15px;
+    padding-left: 20px;
+    border-left: 5px solid rgb(252, 12, 64);
+}
+.empty-wishlist-conatainer{
+    padding: 3%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    flex-direction: column;
+}
+.empty-wishlist-image{
+    height: 250px;
+    background-color: none;
+}
+.no-wishlist-heading{
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    font-size: 25px;
+    font-weight: 400;
+    margin-top: 10px;
+}
+.wishlist-go-home-btn{
+    padding: 5px 15px;
+    background-color: transparent;
+    color: rgb(255, 0, 43);
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    border: 1px solid rgb(255, 0, 43);
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5px;
+}

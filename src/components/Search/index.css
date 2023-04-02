@@ -1,0 +1,55 @@
+
+.pages-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 25px;
+}
+.page-button{
+    color: rgb(247, 43, 87);
+    border-color: rgb(247, 43, 87);
+    padding: 0px 10px;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 15px;
+}
+
+.page-number-primary{
+    color: rgb(247, 43, 87);
+    border:1px solid rgb(247, 43, 87);
+    padding: 5px 15px;
+    background-color: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+..page-number-primary{
+    color: rgb(247, 43, 87);
+    border:1px solid rgb(247, 43, 87);
+    padding: 5px 15px;
+    background-color: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+.page-number-secondary{
+    color: rgb(247, 43, 87);
+    border:1px solid rgb(51, 48, 49);
+    padding: 5px 15px;
+    background-color: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px;
+}

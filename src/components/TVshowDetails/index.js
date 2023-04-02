@@ -8,6 +8,7 @@ import MoviesContext from "../../context/MoviesContext"
 import Navbar from "../Navbar"
 import Sidebar from "../Sidebar"
 import SimilarMovies from "../SimilarMovies"
+import SimilarTvShows from "../SimilarTvShows"
 
 import './index.css'
 
@@ -18,7 +19,7 @@ const statusConstansts = {
     failure:"FAILURE",
 }
 
-const MovieDetails = (props) => {
+const TVshowDetails = (props) => {
     const [movieDetails,updateMovieDetails] = useState({})
     const [status,setStatus] = useState(statusConstansts.initial)
     const {id} = useParams()
@@ -29,30 +30,32 @@ const MovieDetails = (props) => {
         async function getMovieDetails() {
             setStatus(statusConstansts.inProgress)
             // console.log(id)
-            const getMovieDetailsApiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=fae62ec587f8bc50f34e46b6d33b41e2&language=en-US`
+            const getMovieDetailsApiUrl = `https://api.themoviedb.org/3/tv/${id}?api_key=fae62ec587f8bc50f34e46b6d33b41e2&language=en-US`
             const response = await fetch(getMovieDetailsApiUrl)
             // console.log(response)
             if (response.ok===true){
                 const data = await response.json()
-                // console.log(data)
+                console.log(data)
                 const updatedData = {
                     id:data.id,
                     imdbId:data.imdb_id,
                     adult:data.adult,
                     backdropPath:data.backdrop_path,
                     belongsToCollection:data.belongs_to_collection,
-                    budget:data.budget,
+                    seasons:data.number_of_seasons,
+                    episodes:data.number_of_episodes,
                     genres:data.genres,
                     homepage:data.homepage,
                     originalLanguage:data.original_language,
-                    title:data.title,
+                    title:data.name,
                     overview:data.overview,
                     popularity:data.popularity,
                     posterPath:data.poster_path,
                     productionCompanies:data.production_companies,
-                    releaseDate:data.release_date,
+                    creators:data.created_by,
+                    releaseDate:data.first_air_date,
                     revenue:data.revenue,
-                    runtime:data.runtime,
+                    runtime:data.episode_run_time[0],
                     releasedLanguages:data.spoken_languages,
                     status:data.status,
                     tagline:data.tagline,
@@ -81,8 +84,9 @@ const MovieDetails = (props) => {
                 productionCompanies,
                 releaseDate,
                 revenue,runtime,releasedLanguages,
-                rating,voteCount
-
+                rating,voteCount,
+                seasons,episodes
+                
             } = movieDetails
         const item = wishlist.find(each=>each.id===id)
         let isWishListed
@@ -144,8 +148,8 @@ const MovieDetails = (props) => {
                             /> */}
                             {each.name}</li>))}
                     </ul>
-                    <p className="md-story-overview"><span className="md-category-sub-heading">Budget:</span> {(budget/10000000).toFixed(1)} Cr
-                        <span className="md-category-sub-heading-2">Collection:</span> {(revenue/10000000).toFixed(1)} Cr
+                    <p className="md-story-overview"><span className="md-category-sub-heading">Seasons:</span> {seasons}
+                        <span className="md-category-sub-heading-2">Episodes:</span> {episodes}
                         
                     </p>
                 </div>
@@ -171,7 +175,7 @@ const MovieDetails = (props) => {
             <div className="content-container">
                 <Navbar/>
                 {details}
-                <SimilarMovies movieId={id}/>
+                <SimilarTvShows movieId={id}/>
             
             </div>
 
@@ -179,4 +183,4 @@ const MovieDetails = (props) => {
     )
 }
 
-export default MovieDetails
+export default TVshowDetails
