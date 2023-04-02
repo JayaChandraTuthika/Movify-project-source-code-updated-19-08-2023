@@ -138,7 +138,7 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-
+    align-self: flex-start;
 
 }
 
@@ -153,13 +153,13 @@
     font-family: 'Orbitron', sans-serif;
     color: white;
     font-size: 25px;
-    margin-left: 15px;
-    margin-top: 20px;
+    
+    margin: 20px 0;
     display: flex;
     align-items: center;
 }
 .slick-container{
-    height: 270px;
+    /* height: 270px; */
     width: 95%;
     padding:0 25px;
     color: white;
@@ -169,14 +169,16 @@
     width: 100%;
     height: 100%;
     padding: 15px;
-    transition: .3s all ease-out;
+    transition: .3s opacity ease-out;
     background-color: rgba(0, 0, 0, 0.767);
     opacity: 0;
     overflow: hidden;
+    border-radius: 15px;
     
 }
 .overlay-movie-card:hover{
     opacity: 1;
+    border: 3px solid rgb(243, 20, 50);
     
 }
 .movie-card-title{
@@ -207,26 +209,15 @@
     font-size: 13px;
     font-weight: 500;
     color: rgb(228, 226, 226);
-    max-height: 30%;
+    max-height: 25%;
     overflow: hidden;
 }
-/* .movie-card-play-icon{
-    width: 100%;
-    height: 55px;
-    color: white !important;
-    margin-top: 10px;
-    margin-bottom: 45px;
-} */
 
-/* .slick-card-container{
-    height: 150px;
+.link-style{
+    text-decoration: none;
     
-    border: 1px solid white;
-    background-size: cover;
-    
-} */
+}
 
-/* .slick-image{
-    width: 100%;
-    height: 100%;
-} */
+.wishlisted{
+    background-color: #ca4a2a;
+}

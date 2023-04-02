@@ -4,12 +4,13 @@ import {AiFillStar} from 'react-icons/ai'
 import {BsFillSuitHeartFill} from 'react-icons/bs'
 import {BiCameraMovie} from 'react-icons/bi'
 import {RiMovie2Fill} from 'react-icons/ri'
-import {MdMovieFilter} from 'react-icons/md'
+import {MdDoubleArrow, MdMovieFilter} from 'react-icons/md'
 import  {TailSpin } from 'react-loader-spinner'
 import { SlickCardContainer } from "./styled.js"
 import Slider from "react-slick";
 
 import './index.css'
+import { Link } from "react-router-dom"
 
 
 const statusConstansts = {
@@ -47,7 +48,7 @@ const UpcomingSlider = () => {
                 releaseDate:each.release_date,
                 votesCount:each.vote_count
             }))
-            console.log(updatedData)
+            // console.log(updatedData)
             updateUpcomingList(updatedData)
             setStatus(statusConstansts.success)
         }else{
@@ -55,6 +56,22 @@ const UpcomingSlider = () => {
         }
         
     }
+
+    const NextArrow = (props) => {
+        const {onClick,className,style} = props
+        return(
+        <div className="next-arrow-slick" onClick={onClick}>
+            <MdDoubleArrow className="slick-arrow-icon-right"/>
+        </div>
+        )}
+
+    const PrevArrow = (props) => {
+        const {onClick,className,style} = props
+        return(
+        <div className="prev-arrow-slick" onClick={onClick}>
+            <MdDoubleArrow className="slick-arrow-icon-left"/>
+        </div>
+        )}
 
     const renderUpcoming = () => {
         const settings = {
@@ -88,25 +105,32 @@ const UpcomingSlider = () => {
                     slidesToScroll: 1
                   }
                 }
-              ]
+              ],
+            nextArrow:<NextArrow/>,
+            prevArrow:<PrevArrow/>
         }
 
         return <div className="slick-container">
+            <h1 className="home-slick-heading"><MdMovieFilter className="home-slider-heading-icon"/>Upcoming</h1>
             <Slider {...settings}>
       
         {upcomingList.map(movie => (
-            <SlickCardContainer key={movie.id} backgroundUrl={`https://image.tmdb.org/t/p/original${movie.posterPath}`}>
-                <div className="overlay-movie-card">
-                        <p className="movie-card-title">{movie.title}</p>
-                        <p className="rating-votes">
-                            <AiFillStar className="star-icon"/>{movie.rating} 
-                            <BsFillSuitHeartFill className="heart-icon"/> {movie.votesCount}
-                        </p>
-                        <p className="movie-card-description">{movie.overview}</p>
-                        <button type="button" className="movie-card-btn">See Details ></button>
-                </div>
-                
-            </SlickCardContainer>
+            <Link to={`/movies/${movie.id}`} key={movie.id} className="link-style">
+                <SlickCardContainer  backgroundUrl={`https://image.tmdb.org/t/p/original${movie.posterPath}`}>
+                    <div className="overlay-movie-card">
+                            <p className="movie-card-title">{movie.title}</p>
+                            <p className="rating-votes">
+                                <AiFillStar className="star-icon"/>{movie.rating} 
+                                <BsFillSuitHeartFill className="heart-icon"/> {movie.votesCount}
+                            </p>
+                            <p className="movie-card-description">{movie.overview}</p>
+                            <button type="button" className="movie-card-btn">See Details ></button>
+                    </div>
+                    
+                </SlickCardContainer>
+
+            </Link>
+            
         ))}
         
       
@@ -137,7 +161,7 @@ const UpcomingSlider = () => {
 
     return (
         <>
-        <h1 className="home-slick-heading"><MdMovieFilter className="home-slider-heading-icon"/>Upcoming</h1>
+        
             {upcoming}
         </>
         

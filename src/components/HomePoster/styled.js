@@ -8,4 +8,5 @@ background-size: cover;
 width:90% !important;
 margin-left:10px;
 border-radius:15px;
+
 `
