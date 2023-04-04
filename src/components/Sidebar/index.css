@@ -106,8 +106,69 @@
     margin-bottom: 10px;
 }
 .popup-content{
-    background-image: linear-gradient(to top right,rgb(99, 76, 76),red);
+    /* background-image: linear-gradient(to top right,rgb(99, 76, 76),red); */
     width: 100%;
     height: 100%;
     z-index: 3;
+    background-color: rgba(0, 0, 0, 0.815);
+    transition:.5s background-color ease;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+.popup-box{
+    background-color: rgba(0, 0, 0, 0.452);
+    border: 1px solid rgb(253, 3, 78);
+    animation: popup-animation .3s ease-out;
+    width: 350px;
+    height: 200px;
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+.pp-heading{
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    margin: 0;
+    font-weight: 400;
+    margin-bottom: 25px;
+    
+}
+.pp-btn-container{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+.pp-close-btn{
+    width: 100px;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    background-color: transparent;
+    color: rgb(255, 2, 65);
+    border: 1px solid rgb(255, 2, 65);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.pp-confirm-btn{
+    width: 100px;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+    background-color: rgb(255, 2, 65);
+    color: rgb(5, 5, 5);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+@keyframes popup-animation {
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+    
 }

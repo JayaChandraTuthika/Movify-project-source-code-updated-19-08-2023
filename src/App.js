@@ -50,7 +50,6 @@ return (<MoviesContext.Provider value={{toggleTheme,isDark,searchText,onChangese
     <Route exact path="/wishlisted" element={<WishlistComponent/>}/> 
   </Route>
   
-
 </Routes>
 </MoviesContext.Provider>)
 }

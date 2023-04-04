@@ -66,13 +66,22 @@ const Sidebar = () => {
             <p className='side-bar-menu-heading'>General</p>
             <hr className='sidebar-separator-line'/>
             <Link className='sidebar-links'><MdOutlineSettings className='side-bar-option-icon'/>Settings</Link>
-            <button type="button" className='sidebar-links' onClick={onLogout}><BiLogOut className='side-bar-option-icon'/>Log out</button>
+        
             <Popup
                 trigger={<button type="button" className='sidebar-links'><BiLogOut className='side-bar-option-icon'/>Log out</button>}
                 modal
                 className='logout-popup'
             >
-                <h1>Hey yo!!</h1>
+                {close => (
+                    <div className='popup-box'>
+                    <h1 className='pp-heading'>Are you sure want to logout?</h1>
+                    <div className='pp-btn-container'>
+                        <button onClick={close} className='pp-close-btn'>Close</button>
+                        <button onClick={onLogout} className='pp-confirm-btn'>Confirm</button>
+                    </div>
+                    </div>
+                    
+                )}
             </Popup>
             </div>
             
