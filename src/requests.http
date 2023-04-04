@@ -30,3 +30,6 @@ GET https://api.themoviedb.org/3/movie/521720/reviews?api_key=fae62ec587f8bc50f3
 //Get TV shows
 GET https://api.themoviedb.org/3/tv/1399?api_key=fae62ec587f8bc50f34e46b6d33b41e2&language=en-US
 ###
+
+GET https://jayauthenticationserver.onrender.com/users
+###

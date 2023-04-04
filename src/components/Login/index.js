@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import MoviesContext from "../../context/MoviesContext";
 import {BackgroundContainer} from "./styledComponents.js"
@@ -13,6 +13,20 @@ const Login = () => {
     const [error,setError] = useState(null)
     const [showPassword,togglePassword] = useState(false)
     const navigate = useNavigate()
+
+    
+    useEffect(() => {
+        let count = 0
+        let timerId = setInterval(() => {
+            if (count === 5){
+                clearInterval(timerId)
+            }
+            count += 1
+            fetch('https://jayauthenticationserver.onrender.com/users')
+            .then(res => console.log(res))
+        }, 2000)
+        return () => clearInterval(timerId)       
+    },[])
 
     const onSubmitSuccess = (jwtToken) => {
         Cookies.set('jwt_token',jwtToken,{expires:30})
