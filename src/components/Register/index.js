@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 const Register = () => {
     const [username,setUsername] = useState("")
     const [password,setPassword] = useState("")
+    const [email,setEmail] = useState("")
     const [error,setError] = useState(null)
     const [showPassword,togglePassword] = useState(false)
     const navigate = useNavigate()
@@ -30,27 +31,35 @@ const Register = () => {
     }
     const onLoginValidate = async (event) => {
         event.preventDefault()
-        const userDetails = {
-            username,
-            password
-        }
-        const RegisterApiUrl = "https://jayauthenticationserver.onrender.com/register"
-        const options = {
-            method:"POST",
-            headers:{
-                'Content-Type':"application/json"
-            },
-            body: JSON.stringify(userDetails)
-        }
-        const response = await fetch(RegisterApiUrl,options)
-        const data = await response.json()
-        if (response.ok=== true){
-            const sucessMsg = data.message
-            onSubmitSuccess(sucessMsg)
+        if (!email.includes("@") && !email.includes(".")){
+            onSubmitFailure("Invalid Email")
         }else{
-            const error = data.message
-            onSubmitFailure(error)
+            setError("")
+            const userDetails = {
+                username,
+                password,
+                email
+            }
+            const RegisterApiUrl = "https://jayauthenticationserver.onrender.com/register"
+            const options = {
+                method:"POST",
+                headers:{
+                    'Content-Type':"application/json"
+                },
+                body: JSON.stringify(userDetails)
+            }
+            const response = await fetch(RegisterApiUrl,options)
+            const data = await response.json()
+            if (response.ok=== true){
+                const sucessMsg = data.message
+                onSubmitSuccess(sucessMsg)
+            }else{
+                const error = data.message
+                onSubmitFailure(error)
+            }
+
         }
+        
     }
     return (
         <div className="login-bg-container">
@@ -63,12 +72,14 @@ const Register = () => {
                 </div>
                 
                 <div className="input-box">
-                
                 <input type={showPassword?"text":"password"} id="passwordInput" className="form-input-field" value={password} 
                     onChange={e=> setPassword(e.target.value)} required="required"/>
                 <span className="form-label">PASSWORD</span>
-                
-                
+                </div>
+                <div className="input-box">
+                <input type="text" id="emailInput" className="form-input-field" value={email}
+                    onChange={e=> setEmail(e.target.value)} required="required"/>
+                <span className="form-label">EMAIL</span>
                 </div>
                 <div className="show-password-container">
                     <input id="password-toggle" type="checkbox" className="password-show-checkbox"
