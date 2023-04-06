@@ -81,9 +81,9 @@ const Popular = () => {
     const renderSearchResults = () => (
         <>
         <ul className='similar-movies-list'>
-                {popularMovies.map(movie => (
-                    <Link to={`/movies/${movie.id}`} key={movie.id} className="link-style">
-                        <SlickCardContainer  backgroundUrl={`https://image.tmdb.org/t/p/original${movie.posterPath}`}>
+                {popularMovies.map((movie,i) =>
+                    (<Link to={`/movies/${movie.id}`}  key={movie.id} className="link-style">
+                        <SlickCardContainer delay={i * 0.3} className='slide-up'  backgroundUrl={`https://image.tmdb.org/t/p/original${movie.posterPath}`}>
                             <div className="overlay-movie-card">
                                     <p className="movie-card-title">{movie.title}</p>
                                     <p className="rating-votes">
@@ -95,9 +95,9 @@ const Popular = () => {
                             </div>
                             
                         </SlickCardContainer>
-                    </Link>
+                    </Link>)
             
-        ))}
+        )}
                 </ul>
                 {
                     popularMovies.length > 15 && <div className='pages-container'>
