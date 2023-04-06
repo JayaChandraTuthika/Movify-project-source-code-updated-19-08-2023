@@ -11,6 +11,7 @@ import SimilarMovies from "../SimilarMovies"
 import SimilarTvShows from "../SimilarTvShows"
 
 import './index.css'
+import { TailSpin } from "react-loader-spinner"
 
 const statusConstansts = {
     initial:"INITIAL",
@@ -35,7 +36,7 @@ const TVshowDetails = (props) => {
             // console.log(response)
             if (response.ok===true){
                 const data = await response.json()
-                console.log(data)
+                // console.log(data)
                 const updatedData = {
                     id:data.id,
                     imdbId:data.imdb_id,
@@ -63,8 +64,11 @@ const TVshowDetails = (props) => {
                     voteCount:data.vote_count
                 }
                 // console.log(updatedData)
-                updateMovieDetails(updatedData)
-                setStatus(statusConstansts.success)
+                const timerId = setTimeout(() => {
+                    updateMovieDetails(updatedData)
+                    setStatus(statusConstansts.success)
+                },1000)
+                
             }else{
                 setStatus(statusConstansts.failure)
             }
@@ -158,12 +162,22 @@ const TVshowDetails = (props) => {
 
     }
 
+    const renderLoader = () => (
+        <div className="header">
+            <div className="loader-container">
+                <TailSpin color="red"/>
+            </div>
+        </div>
+    )
+
     let details
     switch (status){
         case statusConstansts.success:
             details= renderMovieDetails()
             break
-            
+        case statusConstansts.inProgress:
+            details = renderLoader()
+            break
         default:
             details= null
            
@@ -175,8 +189,7 @@ const TVshowDetails = (props) => {
             <div className="content-container">
                 <Navbar/>
                 {details}
-                <SimilarTvShows movieId={id}/>
-            
+                {status===statusConstansts.success && <SimilarTvShows movieId={id}/>}
             </div>
 
         </div>

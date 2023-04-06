@@ -10,6 +10,7 @@ import Sidebar from "../Sidebar"
 import SimilarMovies from "../SimilarMovies"
 
 import './index.css'
+import { TailSpin } from "react-loader-spinner"
 
 const statusConstansts = {
     initial:"INITIAL",
@@ -60,8 +61,12 @@ const MovieDetails = (props) => {
                     voteCount:data.vote_count
                 }
                 // console.log(updatedData)
-                updateMovieDetails(updatedData)
-                setStatus(statusConstansts.success)
+                const timerId = setTimeout(() => {
+                    updateMovieDetails(updatedData)
+                    setStatus(statusConstansts.success)
+
+                },1000)
+                
             }else{
                 setStatus(statusConstansts.failure)
             }
@@ -123,9 +128,6 @@ const MovieDetails = (props) => {
                     <span className="list-category">Available languages:</span>
                         {releasedLanguages.map(each =>(<li key={each.name} className="laguage-item">{each.english_name}</li>))}
                     </ul>
-                    
-                    
-                    
                     <hr className="separator-line"/>
                     <p className="md-story">STORY</p>
                     <p className="md-story-overview">{overview}</p>
@@ -154,12 +156,22 @@ const MovieDetails = (props) => {
 
     }
 
+    const renderLoader = () => (
+        <div className="header">
+            <div className="loader-container">
+                <TailSpin color="red"/>
+            </div>
+        </div>
+    )
+
     let details
     switch (status){
         case statusConstansts.success:
             details= renderMovieDetails()
             break
-            
+        case statusConstansts.inProgress:
+            details = renderLoader()
+            break
         default:
             details= null
            
@@ -171,7 +183,10 @@ const MovieDetails = (props) => {
             <div className="content-container">
                 <Navbar/>
                 {details}
-                <SimilarMovies movieId={id}/>
+                {
+                    status ===statusConstansts.success && <SimilarMovies movieId={id}/>
+                }
+                
             
             </div>
 

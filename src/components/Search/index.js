@@ -9,6 +9,7 @@ import { SlickCardContainer } from './styled'
 
 import './index.css'
 import { MdDoubleArrow } from 'react-icons/md'
+import { TailSpin } from 'react-loader-spinner'
 
 const statusConstansts = {
     initial:"INITIAL",
@@ -50,9 +51,13 @@ const Search = () => {
                     votesCount:e.vote_count
                 }))
                 // console.log(updatedData)
-                updateSearchResults(updatedData)
+                const timerId = setTimeout(() => {
+                    updateSearchResults(updatedData)
                 setMaxPages(pagesAvailable)
                 setStatus(statusConstansts.success)
+
+                },1000)
+                
             }else{
                 setStatus(statusConstansts.failure)
             }
@@ -114,11 +119,22 @@ const Search = () => {
             </>
     )
 
+    const renderLoader = () => (
+        <div className="header">
+            <div className="loader-container">
+                <TailSpin color="red"/>
+            </div>
+        </div>
+    )
+
     let results
 
     switch (status){
         case statusConstansts.success:
             results = renderSearchResults()
+            break
+        case statusConstansts.inProgress:
+            results = renderLoader()
             break
         default:
             results = null

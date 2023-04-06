@@ -8,6 +8,7 @@ import Sidebar from '../Sidebar'
 import { SlickCardContainer } from './styled'
 
 import './index.css'
+import { TailSpin } from 'react-loader-spinner'
 
 const statusConstansts = {
     initial:"INITIAL",
@@ -34,7 +35,7 @@ const TVshows = () => {
             // console.log(response)
             if (response.ok===true){
                 const data = await response.json()
-                console.log(data)
+                // console.log(data)
                 const pagesAvailable = data.total_pages
                 const totalResults = data.total_results
                 const updatedData = data.results.map(e=> ({
@@ -49,14 +50,14 @@ const TVshows = () => {
                     votesCount:e.vote_count
                 }))
                 // console.log(updatedData)
-                updateTvShows(updatedData)
-                setMaxPages(pagesAvailable)
-                setStatus(statusConstansts.success)
+                const timerId = setTimeout(() => {
+                    updateTvShows(updatedData)
+                    setMaxPages(pagesAvailable)
+                    setStatus(statusConstansts.success)
+                },1000)
             }else{
                 setStatus(statusConstansts.failure)
             }
-
-
         }
         
         getSearchResults()
@@ -110,11 +111,22 @@ const TVshows = () => {
             </>
     )
 
+    const renderLoader = () => (
+        <div className="header">
+            <div className="loader-container">
+                <TailSpin color="red"/>
+            </div>
+        </div>
+    )
+
     let results
 
     switch (status){
         case statusConstansts.success:
             results = renderTvShows()
+            break
+        case statusConstansts.inProgress:
+            results = renderLoader()
             break
         default:
             results = null
