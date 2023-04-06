@@ -22,6 +22,13 @@ const Navbar = () => {
         onChangesearchText(searchvalue)
         navigate('/search')
     }
+    const onkeyDownSearch = (event) => {
+        // console.log(event.key)
+        if (event.key === "Enter"){
+            onChangesearchText(searchvalue)
+            navigate('/search')
+        }
+    }
     
 
     return (
@@ -30,6 +37,7 @@ const Navbar = () => {
             <input type="text" className="search-input-field" placeholder="Enter Movie Name To Search"
                 value = {searchvalue}
                 onChange={e => setSearchValue(e.target.value)}
+                onKeyDown={onkeyDownSearch}
             />
             <button type="button" className="search-input-btn" onClick={onNavigateSearch}><BsSearchHeartFill className='search-icon-btn'/></button>
 

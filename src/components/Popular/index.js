@@ -8,6 +8,7 @@ import Sidebar from '../Sidebar'
 import { SlickCardContainer } from './styled'
 
 import './index.css'
+import { TailSpin } from 'react-loader-spinner'
 
 const statusConstansts = {
     initial:"INITIAL",
@@ -49,9 +50,11 @@ const Popular = () => {
                     votesCount:e.vote_count
                 }))
                 // console.log(updatedData)
-                updatePopularMovies(updatedData)
-                setMaxPages(pagesAvailable)
-                setStatus(statusConstansts.success)
+                const timerId = setTimeout(() => {
+                    updatePopularMovies(updatedData)
+                    setMaxPages(pagesAvailable)
+                    setStatus(statusConstansts.success)
+                },1000)
             }else{
                 setStatus(statusConstansts.failure)
             }
@@ -109,11 +112,22 @@ const Popular = () => {
             </>
     )
 
+    const renderLoader = () => (
+        <div className="header">
+            <div className="loader-container">
+                <TailSpin color="red"/>
+            </div>
+        </div>
+    )
+
     let results
 
     switch (status){
         case statusConstansts.success:
             results = renderSearchResults()
+            break
+        case statusConstansts.inProgress:
+            results = renderLoader()
             break
         default:
             results = null

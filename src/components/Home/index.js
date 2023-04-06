@@ -15,6 +15,7 @@ import './index.css'
 import Sidebar from "../Sidebar";
 import UpcomingSlider from "../UpcomingSlider"
 import HomePoster from "../HomePoster"
+import RecommendationsSlider from '../RecommendationsSlider';
 
 
 const Home = () => {
@@ -27,6 +28,7 @@ const Home = () => {
             <HomePoster/>
             <TrendingSlider/>
             <UpcomingSlider/>
+            <RecommendationsSlider/>
             </div>
 
         </div>
