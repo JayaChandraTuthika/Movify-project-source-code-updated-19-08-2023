@@ -1,12 +1,14 @@
 import { useContext, useState } from 'react'
 import {BsSearchHeartFill,BsPersonCircle} from 'react-icons/bs'
 import {MdNotificationsActive} from 'react-icons/md'
+import Popup from 'reactjs-popup'
 // import {IoPersonCircleSharp} from 'react-icons/io'
 // import {CgProfile} from 'react-icons/cg'
 import { Link,useNavigate, useResolvedPath } from "react-router-dom"
 import MoviesContext from '../../context/MoviesContext'
 
 import './index.css'
+import Cookies from 'js-cookie'
 
 
 const Navbar = () => {
@@ -29,8 +31,13 @@ const Navbar = () => {
             navigate('/search')
         }
     }
-    
 
+    const onLogout = () => {
+        Cookies.remove('jwt_token')
+        Cookies.remove('userDetails')
+        navigate('/login')
+    }
+    
     return (
         <nav className="navbar-container">
             <div className="search-input-container">
@@ -42,12 +49,43 @@ const Navbar = () => {
             <button type="button" className="search-input-btn" onClick={onNavigateSearch}><BsSearchHeartFill className='search-icon-btn'/></button>
 
             </div>
-                <Link className="nav-link">
-                    <MdNotificationsActive className='profile-icon'/>
-                </Link>
-                <Link className="nav-link">
-                    <BsPersonCircle className='profile-icon'/>
-                </Link>
+                <span className="nav-link">
+                    
+                    <Popup
+                        trigger={<MdNotificationsActive className='profile-icon'/>}
+                        modal
+                        className='logout-popup'
+                    >
+                        {close => (
+                            <div className='popup-box'>
+                            <h1 className='pp-heading'>This feature is coming soon</h1>
+                            <div className='pp-btn-container'>
+                                <button onClick={close} className='pp-close-btn'>Close</button>
+                                
+                            </div>
+                            </div>
+                            
+                        )}
+                    </Popup>
+                </span>
+                <span to="/" className="nav-link">
+                    <Popup
+                        trigger={<BsPersonCircle className='profile-icon'/>}
+                        modal
+                        className='logout-popup'
+                    >
+                        {close => (
+                            <div className='popup-box'>
+                            <h1 className='pp-heading'>This feature is coming soon</h1>
+                            <div className='pp-btn-container'>
+                                <button onClick={close} className='pp-close-btn'>Close</button>
+                                
+                            </div>
+                            </div>
+                            
+                        )}
+                    </Popup>
+                </span>
         </nav>
     )
 }

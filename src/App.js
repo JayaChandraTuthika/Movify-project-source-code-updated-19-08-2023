@@ -13,14 +13,21 @@ import WishlistComponent from './components/WishlistComponent';
 import TVshows from './components/TVshows';
 import TVshowDetails from './components/TVshowDetails';
 import ProtectedRoutes from './components/ProtectedRoutes';
+// import UserProfile from './components/UserProfile';
+import UserSettings from './components/UserSettings';
 
 const App = () => {
   const [isDark,toggleTheme] = useState(true)
   const [searchText,setSearchText] = useState("")
   const [wishlist,setWishList] = useState([])
+  const [userDetails,onChangeUserDetails] = useState({})
 
   const onChangesearchText =(val) => {
       setSearchText(val)
+  }
+
+  const changeUserDetails = (user) => {
+    onChangeUserDetails(user)
   }
 
   const toggleWishListItem = (movie) => {
@@ -36,7 +43,12 @@ const App = () => {
 
   }
   
-return (<MoviesContext.Provider value={{toggleTheme,isDark,searchText,onChangesearchText,wishlist,toggleWishListItem}}>
+return (<MoviesContext.Provider value={{toggleTheme,isDark,searchText,
+                                        onChangesearchText,
+                                        wishlist,
+                                        toggleWishListItem,
+                                        userDetails,
+                                        changeUserDetails}}>
 <Routes>
   <Route exact path='/login' element={<Login/>}/>
   <Route exact path='/register' element={<Register/>}/>
@@ -47,7 +59,8 @@ return (<MoviesContext.Provider value={{toggleTheme,isDark,searchText,onChangese
     <Route exact path="/popular" element={<Popular/>}/>
     <Route exact path="/tvshows" element={<TVshows/>}/>
     <Route exact path="/tv/:id" element={<TVshowDetails/>}/>
-    <Route exact path="/wishlisted" element={<WishlistComponent/>}/> 
+    <Route exact path="/wishlisted" element={<WishlistComponent/>}/>
+    <Route exact path="/settings" element={<UserSettings/>}/>
   </Route>
   
 </Routes>

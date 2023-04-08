@@ -34,5 +34,40 @@ GET https://api.themoviedb.org/3/movie/521720/reviews?api_key=fae62ec587f8bc50f3
 GET https://api.themoviedb.org/3/tv/1399?api_key=fae62ec587f8bc50f34e46b6d33b41e2&language=en-US
 ###
 
+/////////////Authentication////////////////////////////
+
+//Get Users
 GET https://jayauthenticationserver.onrender.com/users
 ###
+
+///Register Api
+POST https://jayauthenticationserver.onrender.com/register
+Content-Type: application/json
+
+{
+    "username":"vinay59",
+    "password":"ajay@2023",
+    "email":"chandra@456"
+}
+###
+///Login Api
+POST https://jayauthenticationserver.onrender.com/login
+Content-Type: application/json
+
+{
+    "username":"vinay85",
+    "password":"ajay@2025"
+
+}
+###
+//Update Profile Api
+PUT https://jayauthenticationserver.onrender.com/update-profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InZpbmF5ODUiLCJwYXNzd29yZCI6ImFqYXlAMjAyNSIsImlhdCI6MTY4MDg3NjkyNn0._BeYMntYYn1C2qDGZnVAfDcNCRQs0K-pxujbRLTgTds
+Content-Type: application/json
+
+{
+    "username":"vinay98",
+    "password":"ajay@2025",
+    "email":"jay@424"
+
+}
