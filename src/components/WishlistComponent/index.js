@@ -33,9 +33,9 @@ const WishlistComponent = () => {
                     {wishlist.length===0 && renderEmptyView()}
                     <ul className='wishlist-movies-list'>
                     {
-                        wishlist.map(movie=> (
+                        wishlist.map((movie,i)=> (
                             <Link to={movie.seasons===undefined?`/movies/${movie.id}`:`/tv/${movie.id}`} key={movie.id} className="link-style">
-                            <SlickCardContainer  backgroundUrl={`https://image.tmdb.org/t/p/original${movie.posterPath}`}>
+                            <SlickCardContainer delay={i*0.2} backgroundUrl={`https://image.tmdb.org/t/p/original${movie.posterPath}`}>
                                 <div className="overlay-movie-card">
                                         <p className="movie-card-title">{movie.title}</p>
                                         <p className="rating-votes">

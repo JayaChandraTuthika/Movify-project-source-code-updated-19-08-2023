@@ -114,9 +114,9 @@ const TrendingSlider = () => {
             <h1 className="home-slick-heading"><BsFire className="home-slider-heading-icon"/>Trending Now</h1>
             <Slider {...settings}>
       
-        {trendingList.map(movie => (
+        {trendingList.map((movie,i) => (
             <Link to={`/movies/${movie.id}`} key={movie.id} className="link-style">
-            <SlickCardContainer  backgroundUrl={`https://image.tmdb.org/t/p/original${movie.posterPath}`}>
+            <SlickCardContainer delay={i * 0.2}  backgroundUrl={`https://image.tmdb.org/t/p/original${movie.posterPath}`}>
                 <div className="overlay-movie-card">
                     {/* <BsPlayFill color="#ffffff" className="movie-card-play-icon"/> */}
                         <p className="movie-card-title">{movie.title}</p>

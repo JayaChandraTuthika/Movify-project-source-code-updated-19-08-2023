@@ -90,9 +90,7 @@ const UserSettings = () => {
             Cookies.remove('jwt_token')
             Cookies.remove('userDetails')
             navigate('/login')
-            
         }
-
     }
 
     const renderProfileDetails = () => {

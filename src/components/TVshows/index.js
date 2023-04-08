@@ -80,9 +80,9 @@ const TVshows = () => {
     const renderTvShows = () => (
         <>
         <ul className='similar-movies-list'>
-                {tvShows.map(show => (
+                {tvShows.map((show,i) => (
                     <Link to={`/tv/${show.id}`} key={show.id} className="link-style">
-                        <SlickCardContainer  backgroundUrl={`https://image.tmdb.org/t/p/original${show.posterPath}`}>
+                        <SlickCardContainer delay={i*0.2} backgroundUrl={`https://image.tmdb.org/t/p/original${show.posterPath}`}>
                             <div className="overlay-movie-card">
                                     <p className="movie-card-title">{show.title}</p>
                                     <p className="rating-votes">
