@@ -13,6 +13,8 @@ const Login = () => {
     const [error,setError] = useState(null)
     const [showPassword,togglePassword] = useState(false)
     const navigate = useNavigate()
+    const value = useContext(MoviesContext)
+    const {changeUserDetails} = value
 
     
     useEffect(() => {
@@ -56,6 +58,8 @@ const Login = () => {
         const data = await response.json()
         if (response.ok=== true){
             const jwtToken = data.jwt_token
+            Cookies.set('userDetails',JSON.stringify(userDetails),{expires:30})
+            // changeUserDetails(userDetails)
             onSubmitSuccess(jwtToken)
         }else{
             const error = data.message

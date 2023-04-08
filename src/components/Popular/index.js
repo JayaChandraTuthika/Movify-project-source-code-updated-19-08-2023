@@ -9,6 +9,7 @@ import { SlickCardContainer } from './styled'
 
 import './index.css'
 import { TailSpin } from 'react-loader-spinner'
+import { waitFor } from '@testing-library/react'
 
 const statusConstansts = {
     initial:"INITIAL",
@@ -78,24 +79,33 @@ const Popular = () => {
         }
     }
 
+    const delay = (time) => {
+        return new Promise((resolve,reject) => {
+            setTimeout(() => resolve(),time)
+        })
+    }
+
     const renderSearchResults = () => (
         <>
         <ul className='similar-movies-list'>
-                {popularMovies.map((movie,i) =>
-                    (<Link to={`/movies/${movie.id}`}  key={movie.id} className="link-style">
-                        <SlickCardContainer delay={i * 0.3} className='slide-up'  backgroundUrl={`https://image.tmdb.org/t/p/original${movie.posterPath}`}>
-                            <div className="overlay-movie-card">
-                                    <p className="movie-card-title">{movie.title}</p>
-                                    <p className="rating-votes">
-                                        <AiFillStar className="star-icon"/>{movie.rating} 
-                                        <BsFillSuitHeartFill className="heart-icon"/> {movie.votesCount}
-                                    </p>
-                                    <p className="movie-card-description">{movie.overview}</p>
-                                    <button type="button" className="movie-card-btn">See Details ></button>
-                            </div>
-                            
-                        </SlickCardContainer>
-                    </Link>)
+                {popularMovies.map((movie,i) =>{
+                    return (<Link to={`/movies/${movie.id}`}  key={movie.id} className="link-style">
+                    <SlickCardContainer delay={i*0.2}
+                       backgroundUrl={`https://image.tmdb.org/t/p/original${movie.posterPath}`}>
+                        <div className="overlay-movie-card">
+                                <p className="movie-card-title">{movie.title}</p>
+                                <p className="rating-votes">
+                                    <AiFillStar className="star-icon"/>{movie.rating} 
+                                    <BsFillSuitHeartFill className="heart-icon"/> {movie.votesCount}
+                                </p>
+                                <p className="movie-card-description">{movie.overview}</p>
+                                <button type="button" className="movie-card-btn">See Details ></button>
+                        </div>
+                        
+                    </SlickCardContainer>
+                </Link>)
+                }
+                    
             
         )}
                 </ul>

@@ -34,6 +34,6 @@ width:230px !important;
 margin:10px;
 cursor:pointer;
 border-radius:15px;
-animation: ${slideUp} ${props=>props.delay}s ease-out ;
+animation: ${slideUp} ${props=>props.delay}s ease-out;
 
 `

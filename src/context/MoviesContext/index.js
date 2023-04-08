@@ -6,7 +6,9 @@ const MoviesContext = React.createContext({
     searchText:"",
     onChangesearchText:() => {},
     wishlist:[],
-    toggleWishListItem:() => {}
+    toggleWishListItem:() => {},
+    userDetails:{},
+    changeUserDetails:() => {}
 })
 
 

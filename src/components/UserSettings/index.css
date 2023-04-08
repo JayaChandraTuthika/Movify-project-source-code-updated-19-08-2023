@@ -1,0 +1,94 @@
+*{
+    /* border: 1px solid white; */
+}
+.profile-container{
+    color: white;
+    padding: 5% 10%;
+}
+.detail-item-1{
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.details-icon-style{
+    height: 35px;
+    width: 35px;
+    color: #f8024c;
+    margin-right: 15px;
+}
+.details-name{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: rgb(180, 53, 74);
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+.input-edit-container{
+    display: flex;
+}
+.detail-item-feild-input{
+    width: 300px;
+    padding: 7px 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: rgb(241, 171, 189);
+    background-color: rgb(22, 20, 20);
+    outline: none;
+    /* border: .1px solid #f8024c; */
+    border: none;
+    border-radius: 4px;
+    /* border: none; */
+}
+.detail-item-feild-text{
+    width: 300px;
+    padding: 7px 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: rgb(207, 102, 128);
+    background-color: transparent;
+    outline: none;
+    
+    border: none;
+}
+.save-profile-details-btn{
+    border: none;
+    outline: none;
+    background-color: #f8024c;
+    color: rgb(19, 16, 16);
+    padding: 7px 15px;
+    /* width: 80px; */
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #f8024c;
+    cursor: pointer;
+}
+.edit-profile-details-btn{
+    border: 1px solid #f8024c;
+    cursor: pointer;
+    outline: none;
+    background-color: transparent;
+    color: #f8024c;
+    padding: 7px;
+    width: 80px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    border-radius: 5px;
+    
+}
+.cancel-edit-profile-details-btn{
+    border: 1px solid #f8024c;
+    cursor: pointer;
+    outline: none;
+    background-color: transparent;
+    color: #f8024c;
+    padding: 7px;
+    width: 80px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-left: 10px;
+}

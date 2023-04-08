@@ -43,6 +43,7 @@ const Sidebar = () => {
 
     const onLogout = () => {
         Cookies.remove('jwt_token')
+        Cookies.remove('userDetails')
         navigate('/login')
     }
     
@@ -65,8 +66,7 @@ const Sidebar = () => {
             <div className='sidebar-bottom-container'>
             <p className='side-bar-menu-heading'>General</p>
             <hr className='sidebar-separator-line'/>
-            <Link className='sidebar-links'><MdOutlineSettings className='side-bar-option-icon'/>Settings</Link>
-        
+            <Link to="/settings" className='sidebar-links'><MdOutlineSettings className='side-bar-option-icon'/>Settings</Link>
             <Popup
                 trigger={<button type="button" className='sidebar-links'><BiLogOut className='side-bar-option-icon'/>Log out</button>}
                 modal
