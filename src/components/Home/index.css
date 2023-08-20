@@ -13,7 +13,7 @@
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #8996a7;
+  background: linear-gradient(#c9022d, #ca4a2a);
 }
 .main-background {
   background-color: rgb(8, 7, 7);
