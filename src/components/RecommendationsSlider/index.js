@@ -25,10 +25,10 @@ const RecommendationsSlider = () => {
   const value = useContext(MoviesContext);
 
   useEffect(() => {
-    getTrendingMovies();
+    getRecommendedMovies();
   }, []);
 
-  const getTrendingMovies = async () => {
+  const getRecommendedMovies = async () => {
     setStatus(statusConstansts.inProgress);
     const movieId = value.wishlist.length === 0 ? 299536 : value.wishlist[0].id;
     const jwtToken = Cookies.get("jwt_token");

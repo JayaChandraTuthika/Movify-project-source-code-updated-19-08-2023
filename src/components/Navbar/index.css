@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;500&display=swap");
+
 .navbar-container {
   /* background-color: rgba(73, 69, 69, 0.308); */
   margin: 0;
@@ -8,7 +10,7 @@
   padding: 30px;
   justify-content: flex-end;
 
-  /* position: absolute; */
+  position: relative;
   z-index: 2;
   /* top: 0;
     left: 0;
@@ -92,9 +94,110 @@
   font-size: 16px;
   font-family: "Orbitron", sans-serif;
   margin: 0 20px;
+  position: relative;
 }
 .nav-link:hover {
   color: rgb(247, 43, 87);
+}
+.notifications-container {
+  position: absolute;
+  top: 30px;
+  right: 25px;
+  background-color: rgba(0, 0, 0, 0.699);
+  color: white;
+  transform: scale(0);
+  /* transform: rotate3d(0, 1, 0, 90deg); */
+  transition: 0.3s all ease-out;
+  transform-origin: top right;
+  border: 1px solid rgba(247, 43, 87, 0.555);
+  border-radius: 7px;
+  opacity: 0;
+}
+.notification-item {
+  display: flex;
+  padding: 7px;
+}
+.notification-item:hover {
+  background-color: rgba(51, 51, 51, 0.507);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.notification-item-text {
+  font-family: "Oswald", sans-serif;
+  margin-left: 10px;
+  width: 180px;
+  padding-right: 40px;
+  position: relative;
+}
+.notification-item-text h3 {
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: clip;
+  width: 100%;
+  overflow: hidden;
+}
+.notification-item-text p {
+  font-size: 10px;
+  font-weight: 300;
+  text-overflow: ellipsis;
+  max-height: px;
+  overflow: hidden;
+
+  white-space: nowrap;
+}
+.notification-item-text span {
+  font-size: 7px;
+  font-weight: 300;
+  position: absolute;
+  right: 5px;
+  top: 2px;
+  padding: 3px 4px;
+  animation: blink 0.5s ease alternate-reverse infinite;
+  border-radius: 2px;
+}
+@keyframes blink {
+  0% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: rgba(247, 43, 87, 0.555);
+  }
+}
+/* .notifications-container div {
+  position: relative;
+  z-index: 100;
+} */
+.expand-notifications {
+  transform: scale(1);
+  opacity: 1;
+  /* transform: rotate3d(0, 1, 0, 0deg); */
+}
+.navbar-icon-wrapper-btn {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  position: relative;
+  /* color: rgb(248, 9, 69); */
+  /* border: none; */
+  outline: none;
+}
+.notifications-count {
+  position: absolute;
+  top: 15px;
+  right: 0px;
+  font-size: 9px;
+  width: 19px;
+  height: 19px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 50%;
+  background-color: rgb(247, 43, 87);
+  color: black;
+  font-family: "Orbitron", sans-serif;
+  /* letter-spacing: 1px; */
 }
 /* .logout-btn {
   color: rgb(247, 43, 87);
@@ -143,6 +246,7 @@
     width: 22px;
     padding-top: 3px;
   }
+
   .logo-text-navbar {
     display: block;
     /* margin: 0; */

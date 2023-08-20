@@ -67,8 +67,10 @@
   align-items: flex-start;
   /* color: rgba(0, 0, 0, 0.822); */
   padding: 20px 45px;
+  /* border: 2px solid yellow; */
+  /* z-index: 10; */
+  /* position: relative; */
 }
-
 .poster-title {
   font-family: "Poppins", sans-serif;
   font-size: 35px;
