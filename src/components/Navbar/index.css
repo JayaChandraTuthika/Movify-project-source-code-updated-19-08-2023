@@ -113,9 +113,25 @@
   border-radius: 7px;
   opacity: 0;
 }
+.notifications-container h6 {
+  font-family: "Oswald", sans-serif;
+
+  font-size: 11px;
+  color: rgba(202, 102, 127, 0.61);
+  margin: 3px 7px;
+  margin-bottom: 1px;
+  letter-spacing: 1px;
+}
+.notifications-container hr {
+  border: 1px solid rgba(175, 35, 70, 0.322);
+  margin: 0 5px;
+  margin-bottom: 5px;
+}
 .notification-item {
   display: flex;
   padding: 7px;
+  text-decoration: none;
+  color: white;
 }
 .notification-item:hover {
   background-color: rgba(51, 51, 51, 0.507);
@@ -212,6 +228,78 @@
   height: 30px;
   color: rgb(247, 43, 87);
   cursor: pointer;
+}
+
+.popup-box-user {
+  background-color: rgba(0, 0, 0, 0.753);
+  border: 1px solid rgb(253, 3, 78);
+  animation: popup-animation 0.3s ease-out;
+  width: max(350px, 60%);
+  min-height: 200px;
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 25px;
+  position: relative;
+}
+.user-profile-close-btn {
+  border: none;
+  outline: none !important;
+  background-color: transparent;
+  color: rgb(253, 3, 78);
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+.user-profile-close-btn-icon {
+  height: 18px;
+  width: 18px;
+}
+.profile-image-user {
+  border-radius: 50%;
+}
+.profile-form {
+  width: 100%;
+  padding: 10px 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* background-color: aliceblue; */
+}
+.profile-form-item {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  /* border: 1px solid yellow; */
+}
+.profile-form-item label {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: rgb(180, 53, 74);
+  font-size: 13px;
+  /* margin-left: 1px; */
+}
+.profile-form-item input {
+  width: 90%;
+  padding: 7px 10px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: rgb(241, 171, 189);
+  background-color: rgb(22, 20, 20);
+  caret-color: rgb(180, 53, 74);
+  transition: 0.3s all ease;
+  outline: none;
+  /* border: .1px solid #f8024c; */
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.profile-form-item input:focus {
+  border: 1px solid rgba(253, 3, 78, 0.829);
 }
 * {
   /* border: 1px solid white; */

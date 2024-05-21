@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { BsSearchHeartFill, BsPersonCircle } from "react-icons/bs";
 import { BiSearchAlt } from "react-icons/bi";
+import { AiOutlineClose } from "react-icons/ai";
 import { MdNotificationsActive } from "react-icons/md";
 import Popup from "reactjs-popup";
 // import {IoPersonCircleSharp} from 'react-icons/io'
@@ -23,6 +24,12 @@ const Navbar = () => {
   const { searchText, onChangesearchText } = value;
   const [searchvalue, setSearchValue] = useState(searchText);
   const [searchbarVisible, toggleSearchBar] = useState(false);
+  const [profilePicUrl, setProfilePic] = useState("");
+  const [nickName, setNickName] = useState("");
+  const [gender, setGender] = useState("");
+  const [age, setAge] = useState("");
+  const [edittingMode, toggleEditMode] = useState(false);
+
   const navigate = useNavigate();
   // const [status, setStatus] = useState(statusConstansts.initial);
   const [notificationsShow, toggleNotifications] = useState(false);
@@ -30,7 +37,39 @@ const Navbar = () => {
 
   useEffect(() => {
     getRecommendedMovies();
+    getUserProfileDetails();
   }, []);
+
+  const getUserProfileDetails = async () => {
+    // setStatus(statusConstansts.inProgress);
+    const jwtToken = Cookies.get("jwt_token");
+    const options = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+    };
+    const response = await fetch(
+      "https://jayauthenticationserver.onrender.com/profile-details",
+      options
+    );
+    const data = await response.json();
+    if (response.ok === true) {
+      console.log(data);
+
+      setProfilePic(data.profilePicUrl | "");
+      if (data.nickName) {
+        setNickName(data.nickName);
+      }
+      if (data.gender) {
+        setGender(data.gender);
+      }
+      if (data.age) {
+        setAge(age);
+      }
+      // setProfilePic(data.profilePicUrl | "");
+    }
+  };
 
   const getRecommendedMovies = async () => {
     // setStatus(statusConstansts.inProgress);
@@ -79,6 +118,7 @@ const Navbar = () => {
       navigate("/search");
     }
   };
+  console.log(nickName);
 
   return (
     <>
@@ -139,8 +179,14 @@ const Navbar = () => {
               notificationsShow && "expand-notifications"
             }`}
           >
+            <h6>New arrivals</h6>
+            <hr />
             {notificationList.map((each) => (
-              <div key={each.id} className="notification-item">
+              <Link
+                key={each.id}
+                className="notification-item"
+                to={`/movies/${each.id}`}
+              >
                 <img
                   src={`https://image.tmdb.org/t/p/original${each.posterPath}`}
                   alt="poster"
@@ -151,46 +197,71 @@ const Navbar = () => {
                   <p>{each.overview}</p>
                   <span>NEW</span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
-          {/* <Popup
+        </span>
+        <span className="nav-link">
+          <Popup
             trigger={
               <button className="navbar-icon-wrapper-btn">
-                <MdNotificationsActive className="profile-icon" />
-                <span className="notifications-count">
-                  {notificationList.length}
-                </span>
+                <BsPersonCircle className="profile-icon" />
               </button>
             }
             modal
             className="logout-popup"
           >
             {(close) => (
-              <div className="popup-box">
-                <h1 className="pp-heading">This feature is coming soon</h1>
-                <div className="pp-btn-container">
-                  <button onClick={close} className="pp-close-btn">
-                    Close
-                  </button>
-                </div>
-              </div>
-            )}
-          </Popup> */}
-        </span>
-        <span className="nav-link">
-          <Popup
-            trigger={<BsPersonCircle className="profile-icon" />}
-            modal
-            className="logout-popup"
-          >
-            {(close) => (
-              <div className="popup-box">
-                <h1 className="pp-heading">This feature is coming soon</h1>
-                <div className="pp-btn-container">
-                  <button onClick={close} className="pp-close-btn">
-                    Close
-                  </button>
+              <div className="popup-box-user">
+                <button
+                  type="button"
+                  onClick={close}
+                  className="user-profile-close-btn"
+                >
+                  <AiOutlineClose className="user-profile-close-btn-icon" />
+                </button>
+                <img
+                  src={
+                    profilePicUrl === ""
+                      ? profilePicUrl
+                      : "https://res.cloudinary.com/dds8wfxdw/image/upload/v1693121557/Movify-project-resources/Profile_avatar_placeholder_large_qladdi.png"
+                  }
+                  alt="profile"
+                  height="70px"
+                  width="70px"
+                  className="profile-image-user"
+                />
+                <div className="profile-form">
+                  <div className="profile-form-item">
+                    <label className="">Nickname</label>
+                    {edittingMode ? (
+                      <input className="" />
+                    ) : (
+                      <p className="detail-item-feild-text">
+                        {nickName === "" ? "Your Nickname" : nickName}
+                      </p>
+                    )}
+                  </div>
+                  <div className="profile-form-item">
+                    <label className="">Gender</label>
+                    {edittingMode ? (
+                      <input className="" />
+                    ) : (
+                      <p className="detail-item-feild-text">
+                        {gender === "" ? "Your Gender" : gender}
+                      </p>
+                    )}
+                  </div>
+                  <div className="profile-form-item">
+                    <label className="">Age</label>
+                    {edittingMode ? (
+                      <input className="" />
+                    ) : (
+                      <p className="detail-item-feild-text">
+                        {age === "" ? "Your Age" : age}
+                      </p>
+                    )}
+                  </div>
                 </div>
               </div>
             )}
