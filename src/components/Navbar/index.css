@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;500&display=swap");
+
 .navbar-container {
   /* background-color: rgba(73, 69, 69, 0.308); */
   margin: 0;
@@ -8,7 +10,7 @@
   padding: 30px;
   justify-content: flex-end;
 
-  /* position: absolute; */
+  position: relative;
   z-index: 2;
   /* top: 0;
     left: 0;
@@ -92,9 +94,126 @@
   font-size: 16px;
   font-family: "Orbitron", sans-serif;
   margin: 0 20px;
+  position: relative;
 }
 .nav-link:hover {
   color: rgb(247, 43, 87);
+}
+.notifications-container {
+  position: absolute;
+  top: 30px;
+  right: 25px;
+  background-color: rgba(0, 0, 0, 0.699);
+  color: white;
+  transform: scale(0);
+  /* transform: rotate3d(0, 1, 0, 90deg); */
+  transition: 0.3s all ease-out;
+  transform-origin: top right;
+  border: 1px solid rgba(247, 43, 87, 0.555);
+  border-radius: 7px;
+  opacity: 0;
+}
+.notifications-container h6 {
+  font-family: "Oswald", sans-serif;
+
+  font-size: 11px;
+  color: rgba(202, 102, 127, 0.61);
+  margin: 3px 7px;
+  margin-bottom: 1px;
+  letter-spacing: 1px;
+}
+.notifications-container hr {
+  border: 1px solid rgba(175, 35, 70, 0.322);
+  margin: 0 5px;
+  margin-bottom: 5px;
+}
+.notification-item {
+  display: flex;
+  padding: 7px;
+  text-decoration: none;
+  color: white;
+}
+.notification-item:hover {
+  background-color: rgba(51, 51, 51, 0.507);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.notification-item-text {
+  font-family: "Oswald", sans-serif;
+  margin-left: 10px;
+  width: 180px;
+  padding-right: 40px;
+  position: relative;
+}
+.notification-item-text h3 {
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: clip;
+  width: 100%;
+  overflow: hidden;
+}
+.notification-item-text p {
+  font-size: 10px;
+  font-weight: 300;
+  text-overflow: ellipsis;
+  max-height: px;
+  overflow: hidden;
+
+  white-space: nowrap;
+}
+.notification-item-text span {
+  font-size: 7px;
+  font-weight: 300;
+  position: absolute;
+  right: 5px;
+  top: 2px;
+  padding: 3px 4px;
+  animation: blink 0.5s ease alternate-reverse infinite;
+  border-radius: 2px;
+}
+@keyframes blink {
+  0% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: rgba(247, 43, 87, 0.555);
+  }
+}
+/* .notifications-container div {
+  position: relative;
+  z-index: 100;
+} */
+.expand-notifications {
+  transform: scale(1);
+  opacity: 1;
+  /* transform: rotate3d(0, 1, 0, 0deg); */
+}
+.navbar-icon-wrapper-btn {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  position: relative;
+  /* color: rgb(248, 9, 69); */
+  /* border: none; */
+  outline: none;
+}
+.notifications-count {
+  position: absolute;
+  top: 15px;
+  right: 0px;
+  font-size: 9px;
+  width: 19px;
+  height: 19px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 50%;
+  background-color: rgb(247, 43, 87);
+  color: black;
+  font-family: "Orbitron", sans-serif;
+  /* letter-spacing: 1px; */
 }
 /* .logout-btn {
   color: rgb(247, 43, 87);
@@ -109,6 +228,78 @@
   height: 30px;
   color: rgb(247, 43, 87);
   cursor: pointer;
+}
+
+.popup-box-user {
+  background-color: rgba(0, 0, 0, 0.753);
+  border: 1px solid rgb(253, 3, 78);
+  animation: popup-animation 0.3s ease-out;
+  width: max(350px, 60%);
+  min-height: 200px;
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 25px;
+  position: relative;
+}
+.user-profile-close-btn {
+  border: none;
+  outline: none !important;
+  background-color: transparent;
+  color: rgb(253, 3, 78);
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+.user-profile-close-btn-icon {
+  height: 18px;
+  width: 18px;
+}
+.profile-image-user {
+  border-radius: 50%;
+}
+.profile-form {
+  width: 100%;
+  padding: 10px 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* background-color: aliceblue; */
+}
+.profile-form-item {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  /* border: 1px solid yellow; */
+}
+.profile-form-item label {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: rgb(180, 53, 74);
+  font-size: 13px;
+  /* margin-left: 1px; */
+}
+.profile-form-item input {
+  width: 90%;
+  padding: 7px 10px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: rgb(241, 171, 189);
+  background-color: rgb(22, 20, 20);
+  caret-color: rgb(180, 53, 74);
+  transition: 0.3s all ease;
+  outline: none;
+  /* border: .1px solid #f8024c; */
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.profile-form-item input:focus {
+  border: 1px solid rgba(253, 3, 78, 0.829);
 }
 * {
   /* border: 1px solid white; */
@@ -143,6 +334,7 @@
     width: 22px;
     padding-top: 3px;
   }
+
   .logo-text-navbar {
     display: block;
     /* margin: 0; */
